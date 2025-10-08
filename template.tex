@@ -2,10 +2,10 @@
 %% v3.4 [2023/09/12]
 %% 1. 「論文」
 \documentclass[paper]{ieicej}
-%\documentclass[invited]{ieicej}% 招待論文
+% \documentclass[invited]{ieicej}% 招待論文
 %\documentclass[survey]{ieicej}% サーベイ論文
 %\documentclass[comment]{ieicej}% 解説論文
-%\usepackage[dvipdfmx]{graphicx,xcolor}
+\usepackage[dvipdfmx]{graphicx,xcolor}
 %%\usepackage[dvips]{graphicx}
 \usepackage[fleqn]{amsmath}
 %\usepackage{amsthm}
@@ -16,37 +16,101 @@
 
 \setcounter{page}{1}
 
-\field{}
-\jtitle{}
+\field{A}
+\jtitle{状態遷移図ベースのコード生成とログ可視化機能を備えたセンサネットワーク実機検証基盤の開発}
 \etitle{}
 \authorlist{%
- \authorentry{}{}{}\MembershipNumber{}
+ \authorentry{辻村篤志}{Atsushi Tsujimura}{信州大学}\MembershipNumber{}
+ \authorentry{小林侑生}{Yu Kobayashi}{信州大学}\MembershipNumber{}
+ \authorentry{不破泰}{Yasushi Fuwa}{信州大学}\MembershipNumber{}
+ \authorentry{アサノデービッド}{David Asano}{信州大学}\MembershipNumber{}
  %\authorentry{和文著者名}{英文著者名}{所属ラベル}\MembershipNumber{}
  %\authorentry[メールアドレス]{和文著者名}{英文著者名}{所属ラベル}\MembershipNumber{}
  %\authorentry{和文著者名}{英文著者名}{所属ラベル}[現在の所属ラベル]\MembershipNumber{}
 }
-\affiliate[]{}{}
+\affiliate[Nagano]{信州大学, 長野県}
+ {Shinshu University, 4--17--1 Wakasato, Nagano-shi, 
+  Nagano 380--8553 Japan}
 %\affiliate[所属ラベル]{和文所属}{英文所属}
-%\paffiliate[]{}
+%\paffiliate\[]{}
 %\paffiliate[現在の所属ラベル]{和文所属}
 \jalcdoi{???????????}% ← このままにしておいてください
 
 \begin{document}
 \begin{abstract}
 %和文あらまし 500字以内
+センサネットワークの開発は幅広い専門知識と多大な工数を要する。先行研究では、センサネットワークの動作を表す状態遷移図からコードを生成し、汎用ハード上で動作する環境が構築されてきた。本研究ではその環境を拡張し、その上で実用的な無線通信プロトコルを実装・検証した。その過程で汎用ハード上でのプロトコルの動作が確認しづらいことを課題として認識し、デバッグ用ログ出力とそれを可視化・ステップ実行できる環境を開発しデバッグ効率の向上を図った。
 \end{abstract}
 \begin{keyword}
 %和文キーワード 4〜5語
+無線センサーネットワーク、無線通信プロトコル、状態遷移図、コード生成、ログ可視化
 \end{keyword}
+
 \begin{eabstract}
 %英文アブストラクト 100 words
+The development of sensor networks requires extensive expertise and significant effort. Previous research has generated code from state transition diagrams representing the behavior of sensor networks, establishing an environment that operates on general-purpose hardware. This study expands that environment and implements and verifies practical wireless communication protocols. During this process, we recognized the difficulty in confirming the operation of protocols on general-purpose hardware as a challenge and developed an environment for debugging log output and visualizing and step-executing it to improve debugging efficiency.
 \end{eabstract}
+
 \begin{ekeyword}
 %英文キーワード
+wireless sensor networks, wireless communication protocols, state transition diagrams, code generation, log visualization
 \end{ekeyword}
 \maketitle
 
-\section{まえがき}
+\section{はじめに}
+\subsection{背景}
+無線センサーネットワークは、環境モニタリングやスマートシティなど、さまざまな分野での応用が期待されている。しかし、これらのシステムの開発には、複雑な通信プロトコルやデータ処理アルゴリズムの実装が必要であり、専門的な知識と多大な工数を要する。先行研究では、センサネットワークの動作を表す状態遷移図からコードを生成し、汎用ハード上で動作する環境が構築されてきた。
+\subsection{従来研究}
+従来研究では、無縁通信プロトコルの状態遷移図から自動生成したプログラムを汎用ハード上で動作させ、CSMAおよびTDMAベースのMACプロトコルを実機で実装・検証できる環境が構築されていた(旭ら)。このシステムにより基本的な通信プロトコルの動作検証が可能となったが、デバッグ方法はシリアルコンソールへのログ出力に依存しており、通信処理が高速に進むため逐次的な状態遷移を追跡することが難しかった。その結果、異常動作の原因を把握しづらく、開発効率や教育的利用の観点では十分でない点が課題として残されていた。
+\subsection{目的}
+本研究の目的は、従来研究で課題となっていたデバッグ効率の低さを改善し、実機でのプロトコル検証をより効果的に行える環境を実現することである。そのために、状態遷移図から生成したコードの動作をログとして出力し、それを可視化・ステップ実行できる仕組みを開発した。これにより、プロトコルの動作を逐次的に把握でき、異常動作の原因究明を容易にするとともに、教育や応用実証に適した支援環境を提供することを目指す。
+
+
+
+\section{提案システム}
+\subsection{システム構成}
+本研究で開発したシステムの全体構成を図1に示す。本システムは、状態遷移図を入力としてC++コードを自動生成し、汎用ハードウェア上で実行することでセンサネットワークのプロトコルを検証可能とする。さらに、通信動作の状態遷移の過程をログとして記録し、ブラウザ上で状態遷移の可視化およびステップ実行を行える環境を備えている。これにより、プロトコル設計から実機検証、デバッグまでを一貫して支援することが可能となる。
+\subsection{ファームウェア生成部}
+- 無線通信プロトコルの動作を状態遷移図(Astah)で設計し、xml形式で出力
+- 変換プログラム(Python)を用いて、出力されたxmlをC++プログラムに変換
+- PlatformIO環境でビルドし、ファームウェアを生成
+
+まず，ファームウェア生成部では，無線通信プロトコルの動作を状態遷移図（Astah）上で設計し，XML形式で出力する。次に，変換プログラム（Python）を用いてXMLをC++プログラムへ変換し，PlatformIO環境でビルドすることでファームウェアを生成する。
+\begin{figure}[tb]
+  \centering
+  \includegraphics[width=60mm]{./images/state-machine-image.png}
+  \caption{状態遷移図の例}
+  \ecaption{State transition diagram.}
+  \label{fig:state-machine}
+\end{figure}
+
+
+\begin{verbatim}
+typedef enum { LISTEN, RECEIVE, TRANSMIT } NodeState;
+
+void protocol_main() {
+  switch (state) {
+    case LISTEN:   updateState(RECEIVE);   break;
+    case RECEIVE:  updateState(TRANSMIT);  break;
+    case TRANSMIT: updateState(LISTEN);    break;
+  }
+}
+\end{verbatim}
+
+\subsection{実行環境(ハードウェア)}
+\begin{figure}[tb]
+  \centering
+  \includegraphics[width=60mm]{./images/devices.jpg}
+  \caption{どこでモデム(左)とGPSモジュール(右)}
+  \ecaption{Block diagram of the proposed system.}
+  \label{fig:system}
+\end{figure}
+
+\subsection{デバッグシステム部}
+
+\section{プロトコル実装と評価}
+\section{考察}
+\section{まとめ、今後の展望}
 
 
 \ack %% 謝辞
@@ -70,179 +134,3 @@
 \end{document}
 
 
-
-%% 2. 「レター」
-\documentclass[letter]{ieicej}
-%\usepackage[dvipdfmx]{graphicx,xcolor}
-%%\usepackage[dvips]{graphicx}
-\usepackage[fleqn]{amsmath}
-%\usepackage{amsthm}
-\usepackage{newtxtext}% 英数字フォントの設定を変更しないでください
-\usepackage[varg]{newtxmath}% % 英数字フォントの設定を変更しないでください
-%\usepackage{amssymb}
-%\usepackage{bm}
-
-\setcounter{page}{1}
-
-\typeofletter{研究速報}
-%\typeofletter{紙上討論}
-%\typeofletter{問題提起}
-%\typeofletter{ショートノート}
-\field{}
-\jtitle{}
-\etitle{}
-\authorlist{%
- \authorentry{}{}{}{}\MembershipNumber{}
- %\authorentry{和文著者名}{英文著者名}{会員種別}{所属ラベル}\MembershipNumber{}
- %\authorentry{和文著者名}{英文著者名}{会員種別}{所属ラベル}[現在の所属ラベル]\MembershipNumber{}
-}
-\affiliate[]{}{}
-%\affiliate[所属ラベル]{和文所属}{英文所属}
-%\paffiliate[]{}
-%\paffiliate[現在の所属ラベル]{和文所属}
-\jalcdoi{???????????}% ← このままにしておいてください
-
-\begin{document}
-\maketitle
-\begin{abstract}
-%和文あらまし 120字以内
-\end{abstract}
-\begin{keyword}
-%和文キーワード 4〜5語
-\end{keyword}
-\begin{eabstract}
-%英文アブストラクト 50 words
-\end{eabstract}
-\begin{ekeyword}
-%英文キーワード
-\end{ekeyword}
-
-\section{まえがき}
-
-
-\ack %% 謝辞
-
-%\bibliographystyle{sieicej}
-%\bibliography{myrefs}
-\begin{thebibliography}{99}% 文献数が10未満の時 {9}
-\bibitem{}
-\end{thebibliography}
-
-\appendix
-\section{}
-
-\end{document}
-
-
-
-%% 3. 「レター（C分冊）」
-\documentclass[electronicsletter]{ieicej}
-%\usepackage[dvipdfmx]{graphicx,xcolor}
-%%\usepackage[dvips]{graphicx}
-\usepackage[fleqn]{amsmath}
-%\usepackage{amsthm}
-\usepackage{newtxtext}% 英数字フォントの設定を変更しないでください
-\usepackage[varg]{newtxmath}% % 英数字フォントの設定を変更しないでください
-%\usepackage{amssymb}
-%\usepackage{bm}
-
-\setcounter{page}{1}
-
-\field{}
-\jtitle{}
-\etitle{}
-\authorlist{%
- \authorentry{}{}{}{}\MembershipNumber{}
- %\authorentry{和文著者名}{英文著者名}{会員種別}{所属ラベル}\MembershipNumber{}
- %\authorentry{和文著者名}{英文著者名}{会員種別}{所属ラベル}[現在の所属ラベル]\MembershipNumber{}
-}
-\affiliate[]{}{}
-%\affiliate[所属ラベル]{和文所属}{英文所属}
-%\paffiliate[]{}
-%\paffiliate[現在の所属ラベル]{和文所属}
-\jalcdoi{???????????}% ← このままにしておいてください
-
-\begin{document}
-\begin{abstract}
-%和文あらまし 120字以内
-\end{abstract}
-\begin{keyword}
-%和文キーワード 4〜5語
-\end{keyword}
-\begin{eabstract}
-%英文アブストラクト 50 words
-\end{eabstract}
-\begin{ekeyword}
-%英文キーワード
-\end{ekeyword}
-\maketitle
-
-\section{まえがき}
-
-
-\ack %% 謝辞
-
-%\bibliographystyle{sieicej}
-%\bibliography{myrefs}
-\begin{thebibliography}{99}% 文献数が 10 未満の時 {9}
-\bibitem{}
-\end{thebibliography}
-
-\appendix
-\section{}
-
-\end{document}
-
-
-
-%% 4. 「技術研究報告」
-\documentclass[technicalreport]{ieicej}
-%\usepackage[dvipdfmx]{graphicx,xcolor}
-%%\usepackage[dvips]{graphicx}
-\usepackage[fleqn]{amsmath}
-%\usepackage{amsthm}
-\usepackage{newtxtext}% 英数字フォントの設定を変更しないでください
-\usepackage[varg]{newtxmath}% % 英数字フォントの設定を変更しないでください
-%\usepackage{amssymb}
-%\usepackage{bm}
-
-\tecrepyear{202X}% X を適宜書き換えてください
-\jtitle{}
-\jsubtitle{}
-\etitle{}
-\esubtitle{}
-\authorlist{%
- \authorentry[]{}{}{}
-% \authorentry[メールアドレス]{和文著者名}{英文著者名}{所属ラベル}
-}
-\affiliate[]{}{}
-%\affiliate[所属ラベル]{和文勤務先\\ 連絡先住所}{英文勤務先\\ 英文連絡先住所}
-
-%\MailAddress{$\dagger$hanako@denshi.ac.jp,
-% $\dagger\dagger$\{taro,jiro\}@jouhou.co.jp}
-
-\begin{document}
-\begin{jabstract}
-%和文あらまし
-\end{jabstract}
-\begin{jkeyword}
-%和文キーワード
-\end{jkeyword}
-\begin{eabstract}
-%英文アブストラクト
-\end{eabstract}
-\begin{ekeyword}
-%英文キーワード
-\end{ekeyword}
-\maketitle
-
-\section{はじめに}
-
-
-%\bibliographystyle{sieicej}
-%\bibliography{myrefs}
-\begin{thebibliography}{99}% 文献数が10未満の時 {9}
-\bibitem{}
-\end{thebibliography}
-
-\end{document}
