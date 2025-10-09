@@ -13,6 +13,28 @@
 \usepackage[varg]{newtxmath}% % 英数字フォントの設定を変更しないでください
 %\usepackage{amssymb}
 %\usepackage{bm}
+\usepackage{listings,jvlisting} %日本語のコメントアウトをする場合jvlisting（もしくはjlisting）が必要
+%ここからソースコードの表示に関する設定
+\lstset{
+  basicstyle={\ttfamily},
+  identifierstyle={\small},
+  commentstyle={\smallitshape},
+  keywordstyle={\small\bfseries},
+  ndkeywordstyle={\small},
+  stringstyle={\small\ttfamily},
+  frame={tb},
+  breaklines=true,
+  columns=[l]{fullflexible},
+  numbers=left,
+  xrightmargin=0zw,
+  xleftmargin=3zw,
+  numberstyle={\scriptsize},
+  stepnumber=1,
+  numbersep=1zw,
+  lineskip=-0.5ex,
+  % extendedchars=false, % ★ 日本語の縦書き化を防止
+}
+\renewcommand{\lstlistingname}{プログラム}% ソースコードのキャプションの名称
 
 \setcounter{page}{1}
 
@@ -77,13 +99,22 @@ wireless sensor networks, wireless communication protocols, state transition dia
 
 \section{提案システム}
 \subsection{システム構成}
-本研究で開発したシステムの全体構成を図1に示す。本システムは、状態遷移図を入力としてC++コードを自動生成し、汎用ハードウェア上で実行することでセンサネットワークのプロトコルを検証可能とする。さらに、通信動作の状態遷移の過程をログとして記録し、ブラウザ上で状態遷移の可視化およびステップ実行を行える環境を備えている。これにより、プロトコル設計から実機検証、デバッグまでを一貫して支援することが可能となる。
-\subsection{ファームウェア生成部}
-- 無線通信プロトコルの動作を状態遷移図(Astah)で設計し、xml形式で出力
-- 変換プログラム(Python)を用いて、出力されたxmlをC++プログラムに変換
-- PlatformIO環境でビルドし、ファームウェアを生成
+本研究で開発したシステムの全体構成を図\ref{fig:system-composition}に示す。本システムは、状態遷移図を入力としてC++プログラムを自動生成し、PlatformIO上でビルドを行い、汎用ハードウェア上で実行することでセンサネットワークのプロトコルの動作検証を可能とする。さらに、通信動作の状態遷移や変数値の過程をログとして記録し、ブラウザ上で状態遷移の可視化およびステップ実行を行える環境を備えている。これにより、プロトコル設計から実機検証、デバッグまでを一貫して支援することが可能となる。
+\begin{figure}[tb]
+  \centering
+  \includegraphics[width=80mm]{./images/system-composition.pdf}
+  \caption{提案システムの全体構成}
+  \ecaption{Block diagram of the proposed system.}
+  \label{fig:system-composition}
+\end{figure}
+\vskip\baselineskip
 
-まず，ファームウェア生成部では，無線通信プロトコルの動作を状態遷移図（Astah）上で設計し，XML形式で出力する。次に，変換プログラム（Python）を用いてXMLをC++プログラムへ変換し，PlatformIO環境でビルドすることでファームウェアを生成する。
+
+\subsection{ファームウェア生成部}
+ファームウェア生成部では，無線通信プロトコルの動作をAstah Professional上の状態遷移図として設計し，XML形式で出力する。次に，変換プログラム（Python）を用いて状態遷移図のXMLをC++プログラムへ変換し，PlatformIO環境でビルドすることでファームウェアを生成する。このファームウェアは2.3節で述べる汎用ハードウェア上で実行される。
+
+先行研究（小林ら\cite{kobayashi2023}）では，状態遷移図の各要素（通信状態・遷移・初期値設定・処理内容など）をXMLファイルから抽出し，それぞれをリスト化したうえで，通信状態間の関係を解析し，C++の`switch-case`構造に変換するアルゴリズムが実装されている。本研究におけるファームウェア生成部は，この変換処理を利用しており，状態遷移図で設計されたプロトコル仕様を汎用ハードウェア上で動作するプログラムとして自動生成するものである。
+\vskip\baselineskip
 \begin{figure}[tb]
   \centering
   \includegraphics[width=60mm]{./images/state-machine-image.png}
@@ -92,8 +123,8 @@ wireless sensor networks, wireless communication protocols, state transition dia
   \label{fig:state-machine}
 \end{figure}
 
-
-\begin{verbatim}
+\begin{figure}
+\begin{lstlisting}[caption={変換されたC++プログラム}, label=converted-code]
 typedef enum { LISTEN, RECEIVE, TRANSMIT } NodeState;
 
 void protocol_main() {
@@ -103,7 +134,11 @@ void protocol_main() {
     case TRANSMIT: updateState(LISTEN);    break;
   }
 }
-\end{verbatim}
+\end{lstlisting}
+\end{figure}
+\vskip\baselineskip
+
+
 
 
 \subsection{実行環境(ハードウェア)}
@@ -168,6 +203,15 @@ void protocol_main() {
 \begin{thebibliography}{99}
 \bibitem{jst2022} 科学技術振興機構: 「SIP IoE 年次報告書 2022」, 2022.
 \bibitem{mdpi2021} M. R. Hasan et al.: "Recent Advancement of Data-Driven Models in Wireless Sensor Networks," *Technologies*, vol.9, no.4, 2021.
+\bibitem{asahi}
+\bibitem{kobayashi2023} 小林遼, アサノデービッド, 不破泰:
+“センサーネットワーク検証システムにおける遷移図を用いたMACプロトコル設計環境の開発,”
+信学技報, NS2023-xx, 2023.
+
+\bibitem{PlatformIO}
+\bibitem{circuitdesign}
+\bibitem{astah}
+\bibitem{mermaid}
 \end{thebibliography}
 
 \appendix

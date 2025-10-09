@@ -88,6 +88,19 @@ INPUT c:/texlive/2025/texmf-dist/tex/latex/newtx/newtxmath.sty
 INPUT c:/texlive/2025/texmf-dist/tex/latex/oberdiek/centernot.sty
 INPUT c:/texlive/2025/texmf-dist/tex/latex/oberdiek/centernot.sty
 INPUT c:/texlive/2025/texmf-dist/tex/generic/kastrup/binhex.tex
+INPUT c:/texlive/2025/texmf-dist/tex/latex/listings/listings.sty
+INPUT c:/texlive/2025/texmf-dist/tex/latex/listings/listings.sty
+INPUT c:/texlive/2025/texmf-dist/tex/latex/listings/lstpatch.sty
+INPUT c:/texlive/2025/texmf-dist/tex/latex/listings/lstpatch.sty
+INPUT c:/texlive/2025/texmf-dist/tex/latex/listings/lstpatch.sty
+INPUT c:/texlive/2025/texmf-dist/tex/latex/listings/lstmisc.sty
+INPUT c:/texlive/2025/texmf-dist/tex/latex/listings/lstmisc.sty
+INPUT c:/texlive/2025/texmf-dist/tex/latex/listings/lstmisc.sty
+INPUT c:/texlive/2025/texmf-dist/tex/latex/listings/listings.cfg
+INPUT c:/texlive/2025/texmf-dist/tex/latex/listings/listings.cfg
+INPUT c:/texlive/2025/texmf-dist/tex/latex/listings/listings.cfg
+INPUT c:/texlive/2025/texmf-dist/tex/latex/jvlisting/jvlisting.sty
+INPUT c:/texlive/2025/texmf-dist/tex/latex/jvlisting/jvlisting.sty
 INPUT c:/texlive/2025/texmf-dist/tex/latex/newtx/ot1ntxtlf.fd
 INPUT c:/texlive/2025/texmf-dist/tex/latex/newtx/ot1ntxtlf.fd
 INPUT c:/texlive/2025/texmf-dist/tex/latex/newtx/ot1ntxtlf.fd
@@ -220,6 +233,13 @@ INPUT c:/texlive/2025/texmf-dist/fonts/tfm/public/newtx/ntx-Bold-tlf-ot1.tfm
 INPUT c:/texlive/2025/texmf-dist/fonts/tfm/ptex-fonts/jis/jis-v.tfm
 INPUT c:/texlive/2025/texmf-dist/fonts/tfm/ptex-fonts/jis/jis.tfm
 INPUT c:/texlive/2025/texmf-dist/fonts/tfm/public/newtx/ntx-Regular-tlf-ot1.tfm
+INPUT ./images/system-composition.pdf
+INPUT ./images/system-composition.pdf
+INPUT ./images/system-composition.pdf
+INPUT extractbb -B cropbox -O ./images/system-composition.pdf
+INPUT c:/texlive/2025/texmf-dist/fonts/tfm/ptex-fonts/jis/jis-v.tfm
+INPUT c:/texlive/2025/texmf-dist/fonts/tfm/ptex-fonts/jis/jis.tfm
+INPUT c:/texlive/2025/texmf-dist/fonts/tfm/public/newtx/ntx-Regular-tlf-ot1.tfm
 INPUT c:/texlive/2025/texmf-dist/tex/latex/tex-gyre/ot1qhv.fd
 INPUT c:/texlive/2025/texmf-dist/tex/latex/tex-gyre/ot1qhv.fd
 INPUT c:/texlive/2025/texmf-dist/tex/latex/tex-gyre/ot1qhv.fd
@@ -229,9 +249,6 @@ INPUT c:/texlive/2025/texmf-dist/tex/latex/newtx/ts1ntxtlf.fd
 INPUT c:/texlive/2025/texmf-dist/tex/latex/newtx/ts1ntxtlf.fd
 INPUT c:/texlive/2025/texmf-dist/fonts/tfm/public/tex-gyre/ts1-qtmr.tfm
 OUTPUT out/template.dvi
-INPUT c:/texlive/2025/texmf-dist/fonts/tfm/ptex-fonts/jis/jis-v.tfm
-INPUT c:/texlive/2025/texmf-dist/fonts/tfm/ptex-fonts/jis/jis.tfm
-INPUT c:/texlive/2025/texmf-dist/fonts/tfm/public/newtx/ntx-Regular-tlf-ot1.tfm
 INPUT ./images/state-machine-image.png
 INPUT ./images/state-machine-image.png
 INPUT ./images/state-machine-image.png
