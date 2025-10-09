@@ -100,6 +100,7 @@ wireless sensor networks, wireless communication protocols, state transition dia
 \section{提案システム}
 \subsection{システム構成}
 本研究で開発したシステムの全体構成を図\ref{fig:system-composition}に示す。本システムは、状態遷移図を入力としてC++プログラムを自動生成し、PlatformIO上でビルドを行い、汎用ハードウェア上で実行することでセンサネットワークのプロトコルの動作検証を可能とする。さらに、通信動作の状態遷移や変数値の過程をログとして記録し、ブラウザ上で状態遷移の可視化およびステップ実行を行える環境を備えている。これにより、プロトコル設計から実機検証、デバッグまでを一貫して支援することが可能となる。
+\vskip\baselineskip
 \begin{figure}[tb]
   \centering
   \includegraphics[width=80mm]{./images/system-composition.pdf}
@@ -107,13 +108,15 @@ wireless sensor networks, wireless communication protocols, state transition dia
   \ecaption{Block diagram of the proposed system.}
   \label{fig:system-composition}
 \end{figure}
-\vskip\baselineskip
 
 
 \subsection{ファームウェア生成部}
 ファームウェア生成部では，無線通信プロトコルの動作をAstah Professional上の状態遷移図として設計し，XML形式で出力する。次に，変換プログラム（Python）を用いて状態遷移図のXMLをC++プログラムへ変換し，PlatformIO環境でビルドすることでファームウェアを生成する。このファームウェアは2.3節で述べる汎用ハードウェア上で実行される。
 
 先行研究（小林ら\cite{kobayashi2023}）では，状態遷移図の各要素（通信状態・遷移・初期値設定・処理内容など）をXMLファイルから抽出し，それぞれをリスト化したうえで，通信状態間の関係を解析し，C++の`switch-case`構造に変換するアルゴリズムが実装されている。本研究におけるファームウェア生成部は，この変換処理を利用しており，状態遷移図で設計されたプロトコル仕様を汎用ハードウェア上で動作するプログラムとして自動生成するものである。
+
+図\ref{fig:state-machine}に状態遷移図の例を，プログラム\ref{converted-code}に変換後のC++コードを示す。状態遷移図で定義された「待機（LISTEN）」「受信（RECEIVE）」「送信（TRANSMIT）」の各状態と遷移関係が，`switch-case`構造によって対応づけられており，設計段階の論理構造がソースコードとして正しく反映されていることが確認できる。
+
 \vskip\baselineskip
 \begin{figure}[tb]
   \centering
