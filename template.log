@@ -1,4 +1,4 @@
-This is e-upTeX, Version 3.141592653-p4.1.2-u2.00-250202-2.6 (utf8.sjis) (TeX Live 2025) (preloaded format=platex 2025.10.8)  10 OCT 2025 20:11
+This is e-upTeX, Version 3.141592653-p4.1.2-u2.00-250202-2.6 (utf8.sjis) (TeX Live 2025) (preloaded format=platex 2025.10.8)  10 OCT 2025 21:36
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -741,29 +741,27 @@ Overfull \hbox (22.76404pt too wide) in paragraph at lines 200--201
  [][] 
  []
 
+
+
+[3]
 File: ./images/protocol-state-machine3.png Graphic file (type bmp)
 <./images/protocol-state-machine3.png>
 
-Overfull \hbox (22.76404pt too wide) in paragraph at lines 213--215
+Overfull \hbox (22.76404pt too wide) in paragraph at lines 224--226
  [][] 
  []
 
 
 
-[3]
 File: ./images/old_debug.png Graphic file (type bmp)
 <./images/old_debug.png>
-
-
 
 
 [4]
 
 
 
-[5
-
-]
+[5]
 
 [6
 
@@ -780,12 +778,12 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 8649 strings out of 468391
- 120640 string characters out of 5445622
+ 8650 strings out of 468391
+ 120658 string characters out of 5445622
  557157 words of memory out of 5000000
- 37233 multiletter control sequences out of 15000+600000
+ 37234 multiletter control sequences out of 15000+600000
  678565 words of font info for 171 fonts, out of 8000000 for 9000
  929 hyphenation exceptions out of 8191
  76i,13n,78p,929b,1374s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on template.dvi (6 pages, 29492 bytes).
+Output written on template.dvi (6 pages, 33636 bytes).
