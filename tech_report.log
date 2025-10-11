@@ -1,9 +1,9 @@
-This is e-upTeX, Version 3.141592653-p4.1.2-u2.00-250202-2.6 (utf8.sjis) (TeX Live 2025) (preloaded format=platex 2025.10.8)  11 OCT 2025 20:59
+This is e-upTeX, Version 3.141592653-p4.1.2-u2.00-250202-2.6 (utf8.sjis) (TeX Live 2025) (preloaded format=platex 2025.10.8)  11 OCT 2025 21:08
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**c:/Users/ats_1/Desktop/NS-Thesis/template
-(c:/Users/ats_1/Desktop/NS-Thesis/template.tex
+**c:/Users/ats_1/Desktop/NS-Thesis/tech_report
+(c:/Users/ats_1/Desktop/NS-Thesis/tech_report.tex
 pLaTeX2e <2023-02-14>+1, based on
 LaTeX2e <2025-06-01> patch level 1
 L3 programming layer <2025-09-02>
@@ -384,7 +384,7 @@ File: ot1ntxtlf.fd 2021/05/24 v1.0 font definition file for OT1/ntx/tlf
 )
 LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
 (Font)              scaled to size 9.0pt on input line 63.
- (./template.aux
+ (./tech_report.aux
 
 LaTeX Warning: Label `fig:viewer-ui' multiply defined.
 
@@ -392,7 +392,7 @@ LaTeX Warning: Label `fig:viewer-ui' multiply defined.
 LaTeX Warning: Label `fig:viewer-ui' multiply defined.
 
 )
-\openout1 = `template.aux'.
+\openout1 = `tech_report.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/ntxmi/m/it on input line 63.
 LaTeX Font Info:    Trying to load font information for OML+ntxmi on input line 63.
@@ -576,129 +576,4 @@ LaTeX Font Info:    Font shape `JT1/mc/b/n' in size <10.95> not available
 (Font)              Font shape `JT1/mc/bx/n' tried instead on input line 85.
 LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <10.95> not available
 (Font)              Font shape `JT1/gt/m/n' tried instead on input line 85.
-LaTeX Font Info:    Font shape `JY1/mc/b/n' in size <10.95> not available
-(Font)              Font shape `JY1/mc/bx/n' tried instead on input line 85.
-LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <10.95> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 85.
-LaTeX Font Info:    Font shape `OT1/ntxtlf/b/n' will be
-(Font)              scaled to size 10.95pt on input line 85.
-LaTeX Font Info:    Font shape `OT1/minntx/m/n' will be
-(Font)              scaled to size 9.0pt on input line 85.
-LaTeX Font Info:    Font shape `OT1/minntx/m/n' will be
-(Font)              scaled to size 5.5pt on input line 85.
-LaTeX Font Info:    Font shape `OML/ntxmi/m/it' will be
-(Font)              scaled to size 9.0pt on input line 85.
-LaTeX Font Info:    Font shape `OML/ntxmi/m/it' will be
-(Font)              scaled to size 5.5pt on input line 85.
-LaTeX Font Info:    Font shape `LMS/ntxsy/m/n' will be
-(Font)              scaled to size 9.0pt on input line 85.
-LaTeX Font Info:    Font shape `LMS/ntxsy/m/n' will be
-(Font)              scaled to size 5.5pt on input line 85.
-LaTeX Font Info:    Font shape `LMX/ntxexx/m/n' will be
-(Font)              scaled to size 9.0pt on input line 85.
-LaTeX Font Info:    Font shape `LMX/ntxexx/m/n' will be
-(Font)              scaled to size 5.5pt on input line 85.
-LaTeX Font Info:    Font shape `U/ntxmia/m/it' will be
-(Font)              scaled to size 9.0pt on input line 85.
-LaTeX Font Info:    Font shape `U/ntxmia/m/it' will be
-(Font)              scaled to size 5.5pt on input line 85.
-LaTeX Font Info:    Font shape `U/ntxsym/m/n' will be
-(Font)              scaled to size 9.0pt on input line 85.
-LaTeX Font Info:    Font shape `U/ntxsym/m/n' will be
-(Font)              scaled to size 5.5pt on input line 85.
-LaTeX Font Info:    Font shape `U/ntxsyc/m/n' will be
-(Font)              scaled to size 9.0pt on input line 85.
-LaTeX Font Info:    Font shape `U/ntxsyc/m/n' will be
-(Font)              scaled to size 5.5pt on input line 85.
-LaTeX Font Info:    Font shape `U/ntxexa/m/n' will be
-(Font)              scaled to size 9.0pt on input line 85.
-LaTeX Font Info:    Font shape `U/ntxexa/m/n' will be
-(Font)              scaled to size 5.5pt on input line 85.
-LaTeX Font Info:    Font shape `JT1/mc/b/n' in size <9> not available
-(Font)              Font shape `JT1/mc/bx/n' tried instead on input line 86.
-LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <9> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 86.
-LaTeX Font Info:    Font shape `JY1/mc/b/n' in size <9> not available
-(Font)              Font shape `JY1/mc/bx/n' tried instead on input line 86.
-LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <9> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 86.
-LaTeX Font Info:    Font shape `OT1/ntxtlf/b/n' will be
-(Font)              scaled to size 9.0pt on input line 86.
-
-
-
-
-LaTeX Font Info:    Trying to load font information for TS1+ntxtlf on input line 97.
-(c:/texlive/2025/texmf-dist/tex/latex/newtx/ts1ntxtlf.fd
-File: ts1ntxtlf.fd 2015/01/18 v1.0 fd file for TS1/ntxtlf
-)
-LaTeX Font Info:    Font shape `TS1/ntxtlf/m/n' will be
-(Font)              scaled to size 9.0pt on input line 97.
- [1
-
-
-]
-LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 8.0pt on input line 107.
-File: ./images/system-composition.pdf Graphic file (type pdf)
-<./images/system-composition.pdf>
-
-
-File: ./images/state-machine-image.png Graphic file (type bmp)
-<./images/state-machine-image.png>
-LaTeX Font Info:    Trying to load font information for OT1+ntxtt on input line 133.
-(c:/texlive/2025/texmf-dist/tex/latex/newtx/ot1ntxtt.fd
-File: ot1ntxtt.fd 2012/04/20 v3.1
-)
-LaTeX Font Info:    Font shape `OT1/ntxtt/m/n' will be
-(Font)              scaled to size 8.0pt on input line 133.
-LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 6.0pt on input line 134.
-File: ./images/devices.jpg Graphic file (type bmp)
-<./images/devices.jpg>
-
-
-[2]
-
-File: ./images/viewer_ui.png Graphic file (type bmp)
-<./images/viewer_ui.png>
-File: ./images/viewer_ui.png Graphic file (type bmp)
-<./images/viewer_ui.png>
-File: ./images/protocol-state-machine3.png Graphic file (type bmp)
-<./images/protocol-state-machine3.png>
-
-
-[3]
-File: ./images/old_debug.png Graphic file (type bmp)
-<./images/old_debug.png>
-File: ./images/step_3.png Graphic file (type bmp)
-<./images/step_3.png>
-
-
-
-
-[4]
-
-
-
-[5] (./template.aux)
- ***********
-pLaTeX2e <2023-02-14>+1, based on
-LaTeX2e <2025-06-01> patch level 1
-L3 programming layer <2020/03/25>
- ***********
-
-
-LaTeX Warning: There were multiply-defined labels.
-
- ) 
-Here is how much of TeX's memory you used:
- 8589 strings out of 468391
- 118538 string characters out of 5445622
- 558738 words of memory out of 5000000
- 37175 multiletter control sequences out of 15000+600000
- 673938 words of font info for 160 fonts, out of 8000000 for 9000
- 929 hyphenation exceptions out of 8191
- 76i,8n,78p,929b,1377s stack positions out of 10000i,1000n,20000p,200000b,200000s
-
-Output written on template.dvi (5 pages, 33068 bytes).
+LaTeX Font Info:    Font shape `JY1/mc/b/n' in size <10.95> 
