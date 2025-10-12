@@ -1,4 +1,4 @@
-This is e-upTeX, Version 3.141592653-p4.1.2-u2.00-250202-2.6 (utf8.sjis) (TeX Live 2025) (preloaded format=platex 2025.10.8)  12 OCT 2025 19:52
+This is e-upTeX, Version 3.141592653-p4.1.2-u2.00-250202-2.6 (utf8.sjis) (TeX Live 2025) (preloaded format=platex 2025.10.8)  12 OCT 2025 22:32
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -676,17 +676,20 @@ LaTeX Warning: Reference `fig:realtime-structure' on page 4 undefined on input l
 
 
 
+
+LaTeX Warning: Citation `sonoda2021' on page 4 undefined on input line 285.
+
+
+
+[4]
 File: ./images/protocol-state-machine3.png Graphic file (type bmp)
 <./images/protocol-state-machine3.png>
 
 
-[4]
 File: ./images/old_debug.png Graphic file (type bmp)
 <./images/old_debug.png>
 File: ./images/step_3.png Graphic file (type bmp)
 <./images/step_3.png>
-
-
 
 
 [5]
@@ -708,12 +711,12 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 8598 strings out of 468391
- 118842 string characters out of 5445622
+ 8601 strings out of 468391
+ 118914 string characters out of 5445622
  566832 words of memory out of 5000000
- 37184 multiletter control sequences out of 15000+600000
+ 37187 multiletter control sequences out of 15000+600000
  674214 words of font info for 161 fonts, out of 8000000 for 9000
  929 hyphenation exceptions out of 8191
  76i,8n,78p,939b,1377s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on "tech_report copy.dvi" (6 pages, 42628 bytes).
+Output written on "tech_report copy.dvi" (6 pages, 45888 bytes).
