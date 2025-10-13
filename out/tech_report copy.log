@@ -1,9 +1,9 @@
-This is e-upTeX, Version 3.141592653-p4.1.2-u2.00-250202-2.6 (utf8.sjis) (TeX Live 2025) (preloaded format=platex 2025.10.8)  11 OCT 2025 20:59
+This is e-upTeX, Version 3.141592653-p4.1.2-u2.00-250202-2.6 (utf8.sjis) (TeX Live 2025) (preloaded format=platex 2025.9.18)  14 OCT 2025 01:26
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**c:/Users/ats_1/Desktop/NS-Thesis/template
-(c:/Users/ats_1/Desktop/NS-Thesis/template.tex
+**"c:/Users/ats_1/Desktop/NS-Thesis/tech_report copy.tex"
+(c:/Users/ats_1/Desktop/NS-Thesis/tech_report copy.tex
 pLaTeX2e <2023-02-14>+1, based on
 LaTeX2e <2025-06-01> patch level 1
 L3 programming layer <2025-09-02>
@@ -58,29 +58,29 @@ LaTeX Font Info:    Overwriting symbol font `mincho' in version `bold'
 \@cite@temp=\count297
 ) (c:/texlive/2025/texmf-dist/tex/latex/graphics/graphicx.sty
 Package: graphicx 2024/12/31 v1.2e Enhanced LaTeX Graphics (DPC,SPQR)
- (c:/texlive/2025/texmf-dist/tex/latex/graphics/keyval.sty
+(c:/texlive/2025/texmf-dist/tex/latex/graphics/keyval.sty
 Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
 \KV@toks@=\toks19
 ) (c:/texlive/2025/texmf-dist/tex/latex/graphics/graphics.sty
 Package: graphics 2024/08/06 v1.4g Standard LaTeX Graphics (DPC,SPQR)
- (c:/texlive/2025/texmf-dist/tex/latex/graphics/trig.sty
+(c:/texlive/2025/texmf-dist/tex/latex/graphics/trig.sty
 Package: trig 2023/12/02 v1.11 sin cos tan (DPC)
 ) (c:/texlive/2025/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
 Package graphics Info: Driver file: dvipdfmx.def on input line 106.
- (c:/texlive/2025/texmf-dist/tex/latex/graphics-def/dvipdfmx.def
-File: dvipdfmx.def 2025/09/29 v5.0n Graphics/color driver for dvipdfmx
+(c:/texlive/2025/texmf-dist/tex/latex/graphics-def/dvipdfmx.def
+File: dvipdfmx.def 2022/09/22 v5.0m Graphics/color driver for dvipdfmx
 ))
 \Gin@req@height=\dimen175
 \Gin@req@width=\dimen176
 ) (c:/texlive/2025/texmf-dist/tex/latex/xcolor/xcolor.sty
 Package: xcolor 2024/09/29 v3.02 LaTeX color extensions (UK)
- (c:/texlive/2025/texmf-dist/tex/latex/graphics-cfg/color.cfg
+(c:/texlive/2025/texmf-dist/tex/latex/graphics-cfg/color.cfg
 File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
 Package xcolor Info: Driver file: dvipdfmx.def on input line 274.
- (c:/texlive/2025/texmf-dist/tex/latex/graphics/mathcolor.ltx)
+(c:/texlive/2025/texmf-dist/tex/latex/graphics/mathcolor.ltx)
 Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1349.
 Package xcolor Info: Model `RGB' extended on input line 1365.
 Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1367.
@@ -92,11 +92,10 @@ Package xcolor Info: Model `wave' substituted by `hsb' on input line 1372.
 ) (c:/texlive/2025/texmf-dist/tex/latex/amsmath/amsmath.sty
 Package: amsmath 2025/06/16 v2.17y AMS math features
 \@mathmargin=\skip52
-
 For additional information on amsmath, use the `?' option.
 (c:/texlive/2025/texmf-dist/tex/latex/amsmath/amstext.sty
 Package: amstext 2024/11/17 v2.01 AMS text
- (c:/texlive/2025/texmf-dist/tex/latex/amsmath/amsgen.sty
+(c:/texlive/2025/texmf-dist/tex/latex/amsmath/amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0 generic functions
 \@emptytoks=\toks20
 \ex@=\dimen177
@@ -155,9 +154,9 @@ LaTeX Info: Redefining \[ on input line 2949.
 LaTeX Info: Redefining \] on input line 2950.
 ) (c:/texlive/2025/texmf-dist/tex/latex/newtx/newtxtext.sty
 Package: newtxtext 2024/04/01 v1.744(Michael Sharpe) latex and unicode latex support for TeXGyreTermesX
- `newtxtext' v1.744, 2024/04/01 Text macros taking advantage of TeXGyre Termes and its extensions (msharpe) (c:/texlive/2025/texmf-dist/tex/latex/xpatch/xpatch.sty (c:/texlive/2025/texmf-dist/tex/latex/l3kernel/expl3.sty
+`newtxtext' v1.744, 2024/04/01 Text macros taking advantage of TeXGyre Termes and its extensions (msharpe) (c:/texlive/2025/texmf-dist/tex/latex/xpatch/xpatch.sty (c:/texlive/2025/texmf-dist/tex/latex/l3kernel/expl3.sty
 Package: expl3 2025-09-02 L3 programming layer (loader) 
- (c:/texlive/2025/texmf-dist/tex/latex/l3backend/l3backend-dvips.def
+(c:/texlive/2025/texmf-dist/tex/latex/l3backend/l3backend-dvips.def
 File: l3backend-dvips.def 2025-06-09 L3 backend support: dvips
 \l__pdfannot_backend_content_box=\box77
 \l__pdfannot_backend_model_box=\box78
@@ -166,16 +165,16 @@ File: l3backend-dvips.def 2025-06-09 L3 backend support: dvips
 \g__pdfannot_backend_link_sf_int=\count312
 ))
 Package: xpatch 2020/03/25 v0.3a Extending etoolbox patching commands
- (c:/texlive/2025/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
+(c:/texlive/2025/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
 Package: xparse 2024-08-16 L3 Experimental document command parser
 ) (c:/texlive/2025/texmf-dist/tex/latex/etoolbox/etoolbox.sty
-Package: etoolbox 2025/10/02 v2.5m e-TeX tools for LaTeX (JAW)
+Package: etoolbox 2025/02/11 v2.5l e-TeX tools for LaTeX (JAW)
 \etb@tempcnta=\count313
 )) (c:/texlive/2025/texmf-dist/tex/generic/iftex/iftex.sty
 Package: iftex 2024/12/12 v1.0g TeX engine tests
 ) (c:/texlive/2025/texmf-dist/tex/latex/xkeyval/xkeyval.sty
 Package: xkeyval 2022/06/16 v2.9 package option processing (HA)
- (c:/texlive/2025/texmf-dist/tex/generic/xkeyval/xkeyval.tex (c:/texlive/2025/texmf-dist/tex/generic/xkeyval/xkvutils.tex
+(c:/texlive/2025/texmf-dist/tex/generic/xkeyval/xkeyval.tex (c:/texlive/2025/texmf-dist/tex/generic/xkeyval/xkvutils.tex
 \XKV@toks=\toks25
 \XKV@tempa@toks=\toks26
 )
@@ -195,12 +194,12 @@ LaTeX Font Info:    Setting ntxLF sub-encoding to TS1/0 on input line 24.
 LaTeX Font Info:    Setting ntxTLF sub-encoding to TS1/0 on input line 24.
 LaTeX Font Info:    Setting ntxOsF sub-encoding to TS1/0 on input line 24.
 LaTeX Font Info:    Setting ntxTOsF sub-encoding to TS1/0 on input line 24.
- (c:/texlive/2025/texmf-dist/tex/generic/kastrup/binhex.tex)
+(c:/texlive/2025/texmf-dist/tex/generic/kastrup/binhex.tex)
 \ntx@tmpcnta=\count317
 \ntx@cnt=\count318
- (c:/texlive/2025/texmf-dist/tex/latex/fontaxes/fontaxes.sty
+(c:/texlive/2025/texmf-dist/tex/latex/fontaxes/fontaxes.sty
 Package: fontaxes 2025-05-24 v2.0.1 Font selection axes (deprecated)
- (c:/texlive/2025/texmf-dist/tex/latex/figureversions/figureversions.sty
+(c:/texlive/2025/texmf-dist/tex/latex/figureversions/figureversions.sty
 Package: figureversions 2025-04-29 v1.0.1 Figure versions
 ))
 \tx@sixem=\dimen186
@@ -220,17 +219,16 @@ Package: figureversions 2025-04-29 v1.0.1 Figure versions
 LaTeX Info: Redefining \oldstylenums on input line 902.
 ) (c:/texlive/2025/texmf-dist/tex/latex/newtx/newtxmath.sty
 Package: newtxmath 2024/09/22 v1.754
- `newtxmath' v1.754, 2024/09/22 Math macros based originally on txfonts (msharpe) (c:/texlive/2025/texmf-dist/tex/latex/oberdiek/centernot.sty
+`newtxmath' v1.754, 2024/09/22 Math macros based originally on txfonts (msharpe) (c:/texlive/2025/texmf-dist/tex/latex/oberdiek/centernot.sty
 Package: centernot 2016/05/16 v1.4 Centers the not symbol horizontally (HO)
 )
 \tx@cntz=\count319
- (c:/texlive/2025/texmf-dist/tex/generic/kastrup/binhex.tex)
+(c:/texlive/2025/texmf-dist/tex/generic/kastrup/binhex.tex)
 \tx@Isdigit=\count320
 \tx@IsAlNum=\count321
 \tx@tA=\toks27
 \tx@tB=\toks28
 \tx@su=\read2
-
 amsthm NOT loaded
 LaTeX Font Info:    Redeclaring symbol font `operators' on input line 402.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
@@ -340,7 +338,7 @@ LaTeX Info: Redefining \not on input line 2995.
 \lst@newlines=\count326
 \lst@lineno=\count327
 \lst@maxwidth=\dimen259
- (c:/texlive/2025/texmf-dist/tex/latex/listings/lstpatch.sty
+(c:/texlive/2025/texmf-dist/tex/latex/listings/lstpatch.sty
 File: lstpatch.sty 2024/09/23 1.10c (Carsten Heinz)
 ) (c:/texlive/2025/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2024/09/23 1.10c (Carsten Heinz)
@@ -351,7 +349,7 @@ File: lstmisc.sty 2024/09/23 1.10c (Carsten Heinz)
 File: listings.cfg 2024/09/23 1.10c listings configuration
 ))
 Package: listings 2024/09/23 1.10c (Carsten Heinz)
- (c:/texlive/2025/texmf-dist/tex/latex/jvlisting/jvlisting.sty
+(c:/texlive/2025/texmf-dist/tex/latex/jvlisting/jvlisting.sty
 Package: jvlisting 2011/11/17 v0.7 Formatted Program Listings
 \jvl@idt=\count330
 \jvl@tmphyphenchar=\count331
@@ -384,19 +382,12 @@ File: ot1ntxtlf.fd 2021/05/24 v1.0 font definition file for OT1/ntx/tlf
 )
 LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
 (Font)              scaled to size 9.0pt on input line 63.
- (./template.aux
-
-LaTeX Warning: Label `fig:viewer-ui' multiply defined.
-
-
-LaTeX Warning: Label `fig:viewer-ui' multiply defined.
-
-)
-\openout1 = `template.aux'.
+(out/tech_report copy.aux)
+\openout1 = `"tech_report copy.aux"'.
 
 LaTeX Font Info:    Checking defaults for OML/ntxmi/m/it on input line 63.
 LaTeX Font Info:    Trying to load font information for OML+ntxmi on input line 63.
- (c:/texlive/2025/texmf-dist/tex/latex/newtx/omlntxmi.fd
+(c:/texlive/2025/texmf-dist/tex/latex/newtx/omlntxmi.fd
 File: omlntxmi.fd 2015/08/25 Fontinst v1.933 font definitions for OML/ntxmi.
 )
 LaTeX Font Info:    ... okay on input line 63.
@@ -412,7 +403,7 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 63.
 LaTeX Font Info:    ... okay on input line 63.
 LaTeX Font Info:    Checking defaults for U/ntxexa/m/n on input line 63.
 LaTeX Font Info:    Trying to load font information for U+ntxexa on input line 63.
- (c:/texlive/2025/texmf-dist/tex/latex/newtx/untxexa.fd
+(c:/texlive/2025/texmf-dist/tex/latex/newtx/untxexa.fd
 File: untxexa.fd 2012/04/16 Fontinst v1.933 font definitions for U/ntxexa.
 )
 LaTeX Font Info:    ... okay on input line 63.
@@ -422,13 +413,13 @@ LaTeX Font Info:    Checking defaults for JT1/mc/m/n on input line 63.
 LaTeX Font Info:    ... okay on input line 63.
 LaTeX Font Info:    Checking defaults for LMS/ntxsy/m/n on input line 63.
 LaTeX Font Info:    Trying to load font information for LMS+ntxsy on input line 63.
- (c:/texlive/2025/texmf-dist/tex/latex/newtx/lmsntxsy.fd
+(c:/texlive/2025/texmf-dist/tex/latex/newtx/lmsntxsy.fd
 File: lmsntxsy.fd 2016/07/02 Fontinst v1.933 font definitions for LMS/ntxsy.
 )
 LaTeX Font Info:    ... okay on input line 63.
 LaTeX Font Info:    Checking defaults for LMX/ntxexx/m/n on input line 63.
 LaTeX Font Info:    Trying to load font information for LMX+ntxexx on input line 63.
- (c:/texlive/2025/texmf-dist/tex/latex/newtx/lmxntxexx.fd
+(c:/texlive/2025/texmf-dist/tex/latex/newtx/lmxntxexx.fd
 File: lmxntxexx.fd 2016/07/03 Fontinst v1.933 font definitions for LMX/ntxexx.
 )
 LaTeX Font Info:    ... okay on input line 63.
@@ -456,7 +447,7 @@ LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
 LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
 (Font)              scaled to size 12.0pt on input line 82.
 LaTeX Font Info:    Trying to load font information for OT1+minntx on input line 82.
- (c:/texlive/2025/texmf-dist/tex/latex/newtx/ot1minntx.fd
+(c:/texlive/2025/texmf-dist/tex/latex/newtx/ot1minntx.fd
 File: ot1minntx.fd 2023/09/09 v1.1 font definition file for OT1/minntx
 )
 LaTeX Font Info:    Font shape `OT1/minntx/m/n' will be
@@ -484,7 +475,7 @@ LaTeX Font Info:    Font shape `LMX/ntxexx/m/n' will be
 LaTeX Font Info:    Font shape `LMX/ntxexx/m/n' will be
 (Font)              scaled to size 6.6pt on input line 82.
 LaTeX Font Info:    Trying to load font information for U+ntxmia on input line 82.
- (c:/texlive/2025/texmf-dist/tex/latex/newtx/untxmia.fd
+(c:/texlive/2025/texmf-dist/tex/latex/newtx/untxmia.fd
 File: untxmia.fd 2024/04/09 Fontinst v1.933 font definitions for U/ntxmia.
 )
 LaTeX Font Info:    Font shape `U/ntxmia/m/it' will be
@@ -494,7 +485,7 @@ LaTeX Font Info:    Font shape `U/ntxmia/m/it' will be
 LaTeX Font Info:    Font shape `U/ntxmia/m/it' will be
 (Font)              scaled to size 6.6pt on input line 82.
 LaTeX Font Info:    Trying to load font information for U+ntxsym on input line 82.
- (c:/texlive/2025/texmf-dist/tex/latex/newtx/untxsym.fd
+(c:/texlive/2025/texmf-dist/tex/latex/newtx/untxsym.fd
 File: untxsym.fd 2023/08/16 Fontinst v1.933 font definitions for U/ntxsym.
 )
 LaTeX Font Info:    Font shape `U/ntxsym/m/n' will be
@@ -504,7 +495,7 @@ LaTeX Font Info:    Font shape `U/ntxsym/m/n' will be
 LaTeX Font Info:    Font shape `U/ntxsym/m/n' will be
 (Font)              scaled to size 6.6pt on input line 82.
 LaTeX Font Info:    Trying to load font information for U+ntxsyc on input line 82.
- (c:/texlive/2025/texmf-dist/tex/latex/newtx/untxsyc.fd
+(c:/texlive/2025/texmf-dist/tex/latex/newtx/untxsyc.fd
 File: untxsyc.fd 2012/04/12 Fontinst v1.933 font definitions for U/ntxsyc.
 )
 LaTeX Font Info:    Font shape `U/ntxsyc/m/n' will be
@@ -627,6 +618,9 @@ LaTeX Font Info:    Font shape `OT1/ntxtlf/b/n' will be
 
 
 
+LaTeX Warning: Citation `）' on page 1 undefined on input line 92.
+
+
 
 LaTeX Font Info:    Trying to load font information for TS1+ntxtlf on input line 97.
 (c:/texlive/2025/texmf-dist/tex/latex/newtx/ts1ntxtlf.fd
@@ -634,7 +628,7 @@ File: ts1ntxtlf.fd 2015/01/18 v1.0 fd file for TS1/ntxtlf
 )
 LaTeX Font Info:    Font shape `TS1/ntxtlf/m/n' will be
 (Font)              scaled to size 9.0pt on input line 97.
- [1
+[1
 
 
 ]
@@ -659,46 +653,62 @@ File: ./images/devices.jpg Graphic file (type bmp)
 
 
 [2]
+File: ./images/viewer_ui.png Graphic file (type bmp)
+<./images/viewer_ui.png>
+LaTeX Font Info:    Font shape `OT1/ntxtt/m/n' will be
+(Font)              scaled to size 9.0pt on input line 180.
 
-File: ./images/viewer_ui.png Graphic file (type bmp)
-<./images/viewer_ui.png>
-File: ./images/viewer_ui.png Graphic file (type bmp)
-<./images/viewer_ui.png>
-File: ./images/protocol-state-machine3.png Graphic file (type bmp)
-<./images/protocol-state-machine3.png>
+
+LaTeX Font Info:    Font shape `OT1/ntxtt/m/n' will be
+(Font)              scaled to size 6.0pt on input line 208.
 
 
 [3]
-File: ./images/old_debug.png Graphic file (type bmp)
-<./images/old_debug.png>
-File: ./images/step_3.png Graphic file (type bmp)
-<./images/step_3.png>
+File: ./images/step_2.jpg Graphic file (type bmp)
+<./images/step_2.jpg>
+File: ./images/var_log2.jpg Graphic file (type bmp)
+<./images/var_log2.jpg>
 
+
+File: ./images/2_realtime.png Graphic file (type bmp)
+<./images/2_realtime.png>
+
+LaTeX Warning: Citation `sonoda2021' on page 4 undefined on input line 288.
 
 
 
 [4]
+File: ./images/protocol-state-machine3.png Graphic file (type bmp)
+<./images/protocol-state-machine3.png>
+
+
+File: ./images/3_debug_comparison.pdf Graphic file (type pdf)
+<./images/3_debug_comparison.pdf>
+
+Overfull \hbox (27.82278pt too wide) in paragraph at lines 323--324
+ [][] 
+ []
 
 
 
-[5] (./template.aux)
+[5]
+
+
+
+[6] (out/tech_report copy.aux)
  ***********
 pLaTeX2e <2023-02-14>+1, based on
 LaTeX2e <2025-06-01> patch level 1
 L3 programming layer <2020/03/25>
  ***********
-
-
-LaTeX Warning: There were multiply-defined labels.
-
  ) 
 Here is how much of TeX's memory you used:
- 8589 strings out of 468391
- 118538 string characters out of 5445622
- 558738 words of memory out of 5000000
- 37175 multiletter control sequences out of 15000+600000
- 673938 words of font info for 160 fonts, out of 8000000 for 9000
+ 8608 strings out of 468440
+ 119190 string characters out of 5450466
+ 579786 words of memory out of 5000000
+ 37142 multiletter control sequences out of 15000+600000
+ 673594 words of font info for 162 fonts, out of 8000000 for 9000
  929 hyphenation exceptions out of 8191
- 76i,8n,78p,929b,1377s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 76i,8n,78p,952b,1377s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on template.dvi (5 pages, 33068 bytes).
+Output written on "out/tech_report copy.dvi" (6 pages, 43520 bytes).
