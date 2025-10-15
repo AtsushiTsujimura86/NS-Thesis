@@ -236,13 +236,14 @@ INPUT ./images/state-machine-image.png
 INPUT ./images/state-machine-image.png
 INPUT ./images/state-machine-image.png
 INPUT extractbb -B cropbox -O ./images/state-machine-image.png
+INPUT c:/texlive/2025/texmf-dist/fonts/tfm/ptex-fonts/standard/tmin6.tfm
+INPUT c:/texlive/2025/texmf-dist/fonts/tfm/ptex-fonts/jis/jis.tfm
+INPUT c:/texlive/2025/texmf-dist/fonts/tfm/public/newtx/ntx-Regular-tlf-ot1.tfm
 INPUT c:/texlive/2025/texmf-dist/tex/latex/newtx/ot1ntxtt.fd
 INPUT c:/texlive/2025/texmf-dist/tex/latex/newtx/ot1ntxtt.fd
 INPUT c:/texlive/2025/texmf-dist/tex/latex/newtx/ot1ntxtt.fd
 INPUT c:/texlive/2025/texmf-dist/fonts/tfm/public/txfonts/txtt.tfm
-INPUT c:/texlive/2025/texmf-dist/fonts/tfm/ptex-fonts/standard/tmin6.tfm
-INPUT c:/texlive/2025/texmf-dist/fonts/tfm/ptex-fonts/jis/jis.tfm
-INPUT c:/texlive/2025/texmf-dist/fonts/tfm/public/newtx/ntx-Regular-tlf-ot1.tfm
+INPUT c:/texlive/2025/texmf-dist/fonts/tfm/public/txfonts/txtt.tfm
 INPUT ./images/devices.jpg
 INPUT ./images/devices.jpg
 INPUT ./images/devices.jpg
@@ -252,19 +253,18 @@ INPUT ./images/viewer_ui.png
 INPUT ./images/viewer_ui.png
 INPUT extractbb -B cropbox -O ./images/viewer_ui.png
 INPUT c:/texlive/2025/texmf-dist/fonts/tfm/public/txfonts/txtt.tfm
-INPUT c:/texlive/2025/texmf-dist/fonts/tfm/public/txfonts/txtt.tfm
-INPUT ./images/step_2.jpg
-INPUT ./images/step_2.jpg
-INPUT ./images/step_2.jpg
-INPUT extractbb -B cropbox -O ./images/step_2.jpg
+INPUT ./images/step_22.png
+INPUT ./images/step_22.png
+INPUT ./images/step_22.png
+INPUT extractbb -B cropbox -O ./images/step_22.png
 INPUT ./images/var_log2.jpg
 INPUT ./images/var_log2.jpg
 INPUT ./images/var_log2.jpg
 INPUT extractbb -B cropbox -O ./images/var_log2.jpg
-INPUT ./images/2_realtime.png
-INPUT ./images/2_realtime.png
-INPUT ./images/2_realtime.png
-INPUT extractbb -B cropbox -O ./images/2_realtime.png
+INPUT ./images/realtime.pdf
+INPUT ./images/realtime.pdf
+INPUT ./images/realtime.pdf
+INPUT extractbb -B cropbox -O ./images/realtime.pdf
 INPUT ./images/protocol-state-machine3.png
 INPUT ./images/protocol-state-machine3.png
 INPUT ./images/protocol-state-machine3.png

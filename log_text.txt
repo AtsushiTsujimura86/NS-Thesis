@@ -1,0 +1,20 @@
+STATE: IDLE
+current_slot = 0
+has_own_slot = false
+STATE: RECEIVE_SLOT_INFO
+current_slot = 0
+STATE: WAIT_OWN_SLOT
+current_slot = 1
+candidate_slot = 2
+STATE: WAIT_OWN_SLOT
+current_slot = 2
+candidate_slot = 2
+STATE: WAIT_RANDOM_DELAY
+STATE: TRANSMIT
+・
+・
+・
+
+
+
+

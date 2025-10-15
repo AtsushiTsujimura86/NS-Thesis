@@ -36,7 +36,7 @@
   lineskip=-0.5ex,
   % extendedchars=false, % ★ 日本語の縦書き化を防止
 }
-\renewcommand{\lstlistingname}{プログラム}% ソースコードのキャプションの名称
+% \renewcommand{\lstlistingname}{プログラム}% ソースコードのキャプションの名称
 
 \setcounter{page}{1}
 
@@ -105,10 +105,9 @@ wireless sensor networks, wireless communication protocols, state transition dia
 \section{提案システム}
 \subsection{システム構成}
 本研究で開発したシステムの全体構成を図\ref{fig:system-composition}に示す。本システムは、状態遷移図を入力としてC++プログラムを自動生成し、PlatformIO上でビルドを行い、汎用ハードウェア上で実行することでセンサネットワークのプロトコルの動作検証を可能とする。さらに、通信動作の状態遷移や変数値変化の過程をログとして記録し、ブラウザ上で状態遷移の可視化およびステップ実行を行える環境を備えている。これにより、プロトコル設計から実機検証、デバッグまでを一貫して支援することが可能となる。
-\vskip\baselineskip
 \begin{figure}[h]
   \centering
-  \includegraphics[width=80mm]{./images/system-composition.pdf}
+  \includegraphics[width=90mm]{./images/system-composition.pdf}
   \caption{提案システムの全体構成}
   \ecaption{Block diagram of the proposed system.}
   \label{fig:system-composition}
@@ -118,11 +117,12 @@ wireless sensor networks, wireless communication protocols, state transition dia
 \subsection{ファームウェア生成部}
 ファームウェア生成部では，無線通信プロトコルの動作をAstah Professional上の状態遷移図として設計し，XML形式で出力する。次に，変換プログラム（Python）を用いて状態遷移図のXMLをC++プログラムへ変換し，PlatformIO環境でビルドすることでファームウェアを生成する。このファームウェアは2.3節で述べる汎用ハードウェア上で実行される。
 
+ここで用いたPlatformIOは，組込みシステム開発向けのオープンソース統合環境であり，複数の開発ボードやフレームワークを共通設定で管理できるクロスプラットフォームビルドシステムである\cite{PlatformIO}。
+
 先行研究（小林ら\cite{kobayashi2023}）では，状態遷移図の各要素（通信状態・遷移・初期値設定・処理内容など）をXMLファイルから抽出し，C++の`switch-case`構造に変換するアルゴリズムが実装されている。本研究におけるファームウェア生成部は，この変換処理を利用しており，状態遷移図で設計されたプロトコル仕様を汎用ハードウェア上で動作するプログラムとして自動生成するものである。
 
-図\ref{fig:state-machine}に状態遷移図の例を，プログラム\ref{converted-code}に変換後のC++プログラムを示す。状態遷移図で定義された「待機（LISTEN）」「受信（RECEIVE）」「送信（TRANSMIT）」の各状態と遷移関係が，`switch-case`構造によって対応づけられており，設計段階の論理構造がソースコードとして正しく反映されていることが確認できる。
+図\ref{fig:state-machine}に状態遷移図の例を，図\ref{converted-code}に変換後のC++プログラムを示す。状態遷移図で定義された「待機（LISTEN）」「受信（RECEIVE）」「送信（TRANSMIT）」の各状態と遷移関係が，`switch-case`構造によって対応づけられており，設計段階の論理構造がソースコードとして正しく反映されていることが確認できる。
 
-\vskip\baselineskip
 \begin{figure}[tb]
   \centering
   \includegraphics[width=60mm]{./images/state-machine-image.png}
@@ -132,17 +132,39 @@ wireless sensor networks, wireless communication protocols, state transition dia
 \end{figure}
 
 \begin{figure}
-\begin{lstlisting}[caption={変換されたC++プログラム}, label=converted-code]
-typedef enum { LISTEN, RECEIVE, TRANSMIT } NodeState;
+\scriptsize
+\begin{lstlisting}
+  
+typedef enum { LISTEN, RECEIVE, TRANSMI, WAIT_ACK } NodeState;
 
 void protocol_main() {
   switch (state) {
-    case LISTEN:   updateState(RECEIVE);   break;
-    case RECEIVE:  updateState(TRANSMIT);  break;
-    case TRANSMIT: updateState(LISTEN);    break;
+    case LISTEN:   
+      if (パケットを受信){
+        updateState(RECEIVE);
+      }
+      else updateState(LISTEN);   
+      break;
+    case RECEIVE:
+      パケット受信処理
+      updateState(TRANSMIT);  
+      break;
+    case TRANSMIT: 
+      パケット送信処理 
+      updateState(WAIT_ACK);    
+      break;
+    case WAIT_ACK:
+      if(ACKを受信){
+        ACK受信処理
+        updateState(LISTEN);
+      }
+      else updateState(WAIT_ACK);
+      break;
   }
 }
 \end{lstlisting}
+\caption{状態遷移図から変換されたC++コードの例}
+\label{fig:converted-code}
 \end{figure}
 \vskip\baselineskip
 
@@ -175,39 +197,42 @@ void protocol_main() {
   \ecaption{User interface of the log visualization and step execution environment.}
   \label{fig:viewer-ui}
 \end{figure}
-\vskip\baselineskip
+% \vskip\baselineskip
 
 \subsubsection{ログ出力形式}
 状態遷移や変数を逐次ログとして出力し、それを可視化・解析するために，ログの出力形式を統一した。具体的には，状態遷移は
 \begin{verbatim}
 STATE:LISTEN
-STATE:RECEIVE
 \end{verbatim}
 のように1行1状態で出力し，変数は
 \begin{verbatim}
 [VAR:current_slot=3]
-[VAR:has_own_slot=true]
 \end{verbatim}
 のように \verb|[VAR:<name>=<value>]| 形式で出力する。値は数値・文字列の双方を許容し，可視化側で時間順に解析する。単純で曖昧さの少ない表記とすることで，正規表現に基づく軽量なパーサで高速に処理できる。
 
-さらに，ログ出力の形式にばらつきが生じないよう，C++のマクロを用いてログ出力関数を定義している。このマクロは，変数名と値を自動的に取得して \verb|[VAR:<name>=<value>]| 形式で出力するため，開発者は変数名を明示する必要がない。例えば，ユーザは \verb|PRINT_VAR_LOG(変数)| のように記述するだけで統一フォーマットのログを生成できる。この仕組みにより，全ての出力が一定形式で記録され，可視化システム側で確実に解析可能となる。
-\vskip\baselineskip
+さらに，ログ出力の形式にばらつきが生じないよう，C++のマクロを用いてログ出力関数を定義している。このマクロは，変数名と値を自動的に取得して \verb|[VAR:<name>=<value>]| 形式で出力するため，開発者は変数名を明示する必要がない。例えば，ユーザは 状態遷移図のentry（その状態で実行する処理を記述する部分）内に\verb|PRINT_VAR_LOG(変数)| のように記述するだけで統一フォーマットのログを生成できる。この仕組みにより，全ての出力が一定形式で記録され，可視化システム側で確実に解析可能となる。
+% \vskip\baselineskip
 
 
 \subsubsection{可視化・再現機構}
 本システムでは，記録されたログファイルと，状態遷移図の構造を記述したJSONファイルをもとに状態の遷移を再現する。具体的には，JSONファイルから状態名および遷移関係を抽出し，それらをMermaid.jsのフォーマットへ変換してブラウザ上の画面に状態遷移図を描画する。
 
-Mermaid.jsは，テキストベースでフローチャートや状態遷移図を描画できる軽量なJavaScriptライブラリであり，HTML上での埋め込みや動的描画に適している。本研究では，ブラウザ環境で動作し，スタイルの変更が可能であり，構文が簡潔で自動生成との親和性が高い点から採用した。これにより，状態遷移図を表すJSONデータから自動的にMermaid記法を生成し，\verb|stateDiagram-v2|形式で描画することで，設計段階の論理構造をそのままの形で可視化できる。
+Mermaid.jsは，テキストベースでフローチャートや状態遷移図を描画できる軽量なJavaScriptライブラリであり，
+HTML上での埋め込みや動的描画に適している\cite{mermaid}。
+本研究では，ブラウザ環境で動作し，スタイルの変更が容易であり，構文が簡潔で自動生成との親和性が高い点から採用した。
+これにより，状態遷移図を表すJSONデータから自動的にMermaid記法を生成し，\verb|stateDiagram-v2|形式\cite{mermaid-statediagram}で描画することで，設計段階の論理構造をそのままの形で可視化できる。
+
 
 なお，可視化に用いるJSONファイルは，2.2節で述べたファームウェア生成部と同一のPythonプログラムによって自動的に生成される。Astah Professionalから出力された状態遷移図のXMLを解析し，C++コード生成と同時に，状態遷移関係をJSON形式で出力している。この仕組みにより，設計情報と可視化データの不整合を防ぎ，設計・実装・可視化の一貫性を確保している。
 
-JSONの形式はプログラム2に示す通りである。\texttt{states}配列は通信状態の一覧を表し，\texttt{transitions}配列は状態間の遷移関係を示す。\texttt{from}および\texttt{to}がそれぞれ遷移元と遷移先の状態を表している。このデータ構造をもとにMermaid.js形式のテキストを自動生成し，ブラウザ上で状態遷移図を描画している。
+JSONの形式は図\ref{fig:json-structure}に示す通りである。\texttt{states}配列は通信状態の一覧を表し，\texttt{transitions}配列は状態間の遷移関係を示す。\texttt{from}および\texttt{to}がそれぞれ遷移元と遷移先の状態を表している。このデータ構造をもとにMermaid.js形式のテキストを自動生成し，ブラウザ上で状態遷移図を描画している。
 
-また、JSONから変換されたMermaid.jsフォーマットの例をプログラム3に示す。
-\vskip\baselineskip
+また、JSONから変換されたMermaid.jsフォーマットの例を図\ref{fig:mermaid-example}に示す。
+% \vskip\baselineskip
 \begin{figure}[h]
 \scriptsize
-\begin{lstlisting}[caption={状態遷移図を表すJSONファイルの例},label=json-structure]
+\centering
+\begin{lstlisting}
 {
 "states": [
 "LISTEN",
@@ -224,12 +249,15 @@ JSONの形式はプログラム2に示す通りである。\texttt{states}配列
 "initialState": "LISTEN"
 }
 \end{lstlisting}
+\caption{状態遷移図を表すJSONの例}
+\label{fig:json-structure}
 \end{figure}
+
 
 
 \begin{figure}[h]
 \scriptsize
-\begin{lstlisting}[caption={生成されたMermaid.jsフォーマットの例},label=mermaid-example]
+\begin{lstlisting}
 stateDiagram-v2
 [*] --> LISTEN
 LISTEN --> RECEIVE
@@ -237,6 +265,8 @@ RECEIVE --> TRANSMIT
 TRANSMIT --> WAIT_ACK
 WAIT_ACK --> LISTEN
 \end{lstlisting}
+\caption{状態遷移図を表すMermaid.jsフォーマットの例}
+\label{fig:mermaid-example}
 \end{figure}
 
 \subsubsection{ステップ実行および変数追跡}
@@ -248,7 +278,7 @@ WAIT_ACK --> LISTEN
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=80mm]{./images/step_2.jpg}
+\includegraphics[width=80mm]{./images/step_22.png}
 \caption{ステップ実行時の状態ハイライト例}
 \ecaption{Example of state highlighting during step execution.}
 \label{fig:viewer-ui-step}
@@ -267,7 +297,7 @@ WAIT_ACK --> LISTEN
 \subsubsection{リアルタイム可視化}
 本システムの拡張として，実機で動作するファームウェアのログをリアルタイムに取得・可視化する機能を試作した。図\ref{fig:realtime-structure}にその構成を示す。
 
-デバイス上で動作するファームウェアは，通信動作に応じて状態遷移や変数の値のログをシリアルポートへ逐次出力する。Pythonスクリプトがこのシリアルポートを常時監視し，取得したログデータをMQTT（Message Queuing Telemetry Transport）ブローカーを介してバックエンドサーバへ送信する。MQTTは軽量なPub/Sub型通信方式であり，組込みデバイスとサーバ間のリアルタイム通信に適している。
+デバイス上で動作するファームウェアは，通信動作に応じて状態遷移や変数の値のログをシリアルポートへ逐次出力する。Pythonスクリプトがこのシリアルポートを常時監視し，取得したログデータをMQTT（Message Queuing Telemetry Transport）ブローカーを介してバックエンドサーバへ送信する。MQTTは軽量なPub/Sub型通信方式であり，ネットワーク帯域や電力資源の限られた組込みデバイス間通信に広く用いられている\cite{MQTT}。
 
 バックエンドでは，Node.js上で動作するサーバがMQTTブローカーからログデータを受信し，Socket.IOを用いてブラウザと双方向通信を行う。これにより，取得された状態遷移情報はフロントエンドへ逐次転送され，ブラウザ上のMermaid.jsによる状態遷移図に即時反映される。無線通信デバイスの動作状態の変化をほぼリアルタイムに確認できることを確認した。
 
@@ -277,7 +307,7 @@ WAIT_ACK --> LISTEN
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=80mm]{./images/2_realtime.png}
+\includegraphics[width=70mm]{./images/realtime.pdf}
 \caption{リアルタイム可視化機能の構成}
 \ecaption{System structure of the real-time visualization function.}
 \label{fig:realtime-structure}
@@ -287,19 +317,22 @@ WAIT_ACK --> LISTEN
 本章では，提案システムを用いて実際に無線通信プロトコルを開発・実装し，その有効性を検証した結果を示す。
 
 \subsection{プロトコルの実装}
+\begin{figure*}[h]
+\centering
+\includegraphics[width=0.7\textwidth]{./images/protocol-state-machine3.png}
+\caption{開発したCSMA/TDMAベース無線通信プロトコルの状態遷移図（主要経路のみ）}
+\ecaption{State transition diagram of the developed CSMA/TDMA-based wireless communication protocol (simplified main flow).}
+\label{fig:protocol-state-machine}
+\end{figure*}
+
+
 本節では，状態遷移図から自動生成されたファームウェアを用いて実装した無線通信プロトコルについて述べる。本プロトコルは，園田ら\cite{sonoda2021}によるCSMA/TDMAベースのプロトコルを参考として設計したものであり，TDMAによるスロット分割を基本構造としつつ，各端末が自律的に送信スロットを決定する点に特徴を持つ。
 
 通信は，中継器（集約機）と複数の端末ノードとの間で行われる。通信ターン（フレーム）は複数のスロットで構成される。このプロトコルの特徴は最初のスロットにおいて中継器が全端末に対してスロットの占有状況を通知する点である。各端末はこの情報をもとに，自ノードの送信スロット候補を自律的に選択する。端末は、選択した候補スロットにおいててリクエストパケットを送信し，中継器からACK応答を受信した時点でスロットを確定・占有する。一方で，ACKが返ってこなかった場合や他ノードとの競合が発生した場合は，次のターンで再びスロット情報の受信を試み再試行を行う。このように，各端末が占有状況に基づいて分散的にスロットを決定することで，動的なスロット割り当てを実現している。 
 
-図\ref{fig:protocol-state-machine}に本プロトコルの主要な状態遷移図を示す。本図は都合上、主要な通信状態のみを示している。アイドル状態\texttt{IDLE}から開始し，スロット情報の受信状態（\texttt{RECEIVE\_SLOT\_INFO}），自分のスロットを待つ状態（\texttt{WAIT\_OWN\_SLOT}），ランダム遅延待ち状態（\texttt{WAIT\_RANDOM\_DELAY}），パケット送信状態（\texttt{TRANSMIT}），ACKの受信を待つ状態（\texttt{WAIT\_ACK}），次のターンを待つ状態（\texttt{WAIT\_NEXT\_TURN}）を経て，再び\texttt{IDLE}に戻るサイクル構造を有する。
 
-\begin{figure}[tb]
-\centering
-\includegraphics[width=80mm]{./images/protocol-state-machine3.png}
-\caption{開発したCSMA/TDMAベース無線通信プロトコルの状態遷移図（主要経路のみ）}
-\ecaption{State transition diagram of the developed CSMA/TDMA-based wireless communication protocol (simplified main flow).}
-\label{fig:protocol-state-machine}
-\end{figure}
+図\ref{fig:protocol-state-machine}に本プロトコルの主要な状態遷移図を示す。本図は都合上、主要な通信状態のみを示している。アイドル状態\texttt{IDLE}から開始し，スロット情報の受信状態（\texttt{RECEIVE\_SLOT\_INFO}），自分のスロットを待つ状態（\texttt{WAIT\_OWN\_SLOT}），ランダム遅延待ち状態（\texttt{WAIT\_RANDOM\_DELAY}），パケット送信状態（\texttt{TRANSMIT}），ACKの受信を待つ状態（\texttt{WAIT\_ACK}），次のターンを待つ状態（\texttt{WAIT\_NEXT\_TURN}）を経て，再び\texttt{IDLE}に戻るサイクル構造を有する。
+\vskip\baselineskip
 
 \subsection{検証方法}
 提案システムの有効性を確認するため，状態遷移図から自動生成したファームウェアを用いて，前節で述べたCSMA/TDMA ベースの無線通信プロトコルを実機上で動作させた。 
@@ -309,6 +342,7 @@ WAIT_ACK --> LISTEN
 各ノードは通信ターンごとにスロット割り当て，データ送信，ACK受信などを実行し，その過程で状態遷移および変数の変化をログとしてシリアルポートへ出力した。取得したログを可視化ツールに読み込み，状態遷移の再現および変数追跡を行うことで，通信動作を解析した。
 
 この検証により，提案システムがプロトコル動作を正確に再現し，通信過程を逐次的に把握できるかを評価した。
+\vskip\baselineskip
 
 \subsection{検証結果}
 検証の結果，提案システムを用いることで，通信動作の状態遷移および変数変化を逐次的に追跡できることを確認した。具体的には，状態遷移図上で現在の状態がハイライトされ，対応するログ行と変数表示が同期して更新されるため，通信処理の流れを視覚的に把握できた。さらに，ステップ実行機能によって1遷移ごとの動作を順にたどることができ，どのような経路で現在の状態に至ったのかを正確に確認できた。また，スライダ操作により任意の時点へ素早く移動できるため，関心のある箇所まで一気にスキップしてから詳細なステップ実行を行うなど，効率的な解析が可能となった。
@@ -318,11 +352,12 @@ WAIT_ACK --> LISTEN
  さらに，変数追跡機能により，ある時点における各変数の値とその変化を可視的に確認できた。複数の変数を同時に表示できるため，通信動作中の内部状態を多角的に観察でき，変数の更新過程を一貫して把握できる点が有効であった。 
  
  以上より，提案システムは通信動作の理解と異常検出の双方を容易にし，デバッグおよび開発の両面で作業効率を向上させることが確認された。
+ \vskip\baselineskip
 
 %デバッグ方法の違い
 \begin{figure}[h]
   \centering
-  \includegraphics[width=95mm]{./images/3_debug_comparison.pdf}
+  \includegraphics[width=90mm]{./images/3_debug_comparison.pdf}
   \caption{従来手法（上）と提案システム（下）によるデバッグ過程の比較}
   \ecaption{Comparison of debugging processes between the conventional method (top) and the proposed system (bottom).}
   \label{fig:debug-comparison}
@@ -371,15 +406,35 @@ WAIT_ACK --> LISTEN
 \begin{thebibliography}{99}
 \bibitem{iotanalytics2024} IoT Analytics: "State of IoT 2024: Number of Connected IoT Devices Grows 16\% to 16.6 Billion", 2024.  
 \bibitem{grandview2024} Grand View Research: "Industrial Wireless Sensor Network Market Size, Share \& Trends Analysis Report, 2024–2030", 2024.
-\bibitem{asahi} 旭健太、アサノデービッド、不破泰: "センサーネットワーク検証システムにおける遷移図を用いたMACプロトコル設計環境の開発", 信学技報, NS2023-xx, 2022.
-\bibitem{kobayashi2023} 小林遼, アサノデービッド, 不破泰:
-“センサーネットワーク検証システムにおける遷移図を用いたMACプロトコル設計環境の開発,”
-信学技報, NS2023-xx, 2023.
+\bibitem{asahi}
+旭 健汰, アサノ デービッド, 不破 泰：  
+“無線モデムを用いたセンサネットワークMACプロトコル検証システムの開発”，  
+信学技報, Vol.123, No.307, NS2023‑147, pp.120–125, Dec. 2023.
+
+\bibitem{kobayashi}
+小林 遼, アサノ デービッド, 不破 泰：  
+“センサーネットワーク検証システムにおける遷移図を用いたMACプロトコル設計環境の開発”，  
+信学技報, Vol.123, No.307, NS2023‑148, pp.126–131, Dec. 2023.  
 
 \bibitem{PlatformIO}
-\bibitem{circuitdesign}
-\bibitem{astah}
-\bibitem{mermaid}
+PlatformIO Labs, “What is PlatformIO?”, 
+https://docs.platformio.org/en/latest/what-is-platformio.html, 参照 Oct. 15, 2025.
+
+\bibitem{Mermaid}
+Mermaid.js, “Overview,” 
+https://mermaid.js.org/intro/, 参照 Oct. 15, 2025.
+
+\bibitem{MermaidStateDiagram}
+Mermaid.js, “State Diagram Syntax (stateDiagram-v2),” 
+https://mermaid.js.org/syntax/stateDiagram.html, 参照 Oct. 15, 2025.
+
+\bibitem{MQTT}
+Eclipse Foundation, “MQTT: Message Queuing Telemetry Transport,” 
+https://mqtt.org/, 参照 Oct. 15, 2025.
+
+\bibitem{sonoda} 園田 継一郎, 不破 泰, アサノ デービッド, "無線センサーネット
+ワークの端末・中継機における送信タイミング決定時間短縮方
+法の検討, " 信学技報, NS2022-138, Dec. 2022.
 \end{thebibliography}
 \end{document}
 

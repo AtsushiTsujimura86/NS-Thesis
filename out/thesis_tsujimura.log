@@ -1,4 +1,4 @@
-This is e-upTeX, Version 3.141592653-p4.1.2-u2.00-250202-2.6 (utf8.sjis) (TeX Live 2025) (preloaded format=platex 2025.9.18)  15 OCT 2025 08:07
+This is e-upTeX, Version 3.141592653-p4.1.2-u2.00-250202-2.6 (utf8.sjis) (TeX Live 2025) (preloaded format=platex 2025.9.18)  15 OCT 2025 19:39
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -633,34 +633,51 @@ LaTeX Font Info:    Font shape `TS1/ntxtlf/m/n' will be
 
 ]
 LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 8.0pt on input line 109.
+(Font)              scaled to size 8.0pt on input line 108.
 File: ./images/system-composition.pdf Graphic file (type pdf)
 <./images/system-composition.pdf>
+
+Overfull \hbox (13.5964pt too wide) in paragraph at lines 110--111
+ [][] 
+ []
+
+
+LaTeX Warning: Citation `kobayashi2023' on page 2 undefined on input line 122.
+
+
+LaTeX Warning: Reference `converted-code' on page 2 undefined on input line 124.
+
 
 
 File: ./images/state-machine-image.png Graphic file (type bmp)
 <./images/state-machine-image.png>
-LaTeX Font Info:    Trying to load font information for OT1+ntxtt on input line 135.
+LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
+(Font)              scaled to size 6.0pt on input line 135.
+LaTeX Font Info:    Trying to load font information for OT1+ntxtt on input line 136.
 (c:/texlive/2025/texmf-dist/tex/latex/newtx/ot1ntxtt.fd
 File: ot1ntxtt.fd 2012/04/20 v3.1
 )
 LaTeX Font Info:    Font shape `OT1/ntxtt/m/n' will be
-(Font)              scaled to size 8.0pt on input line 135.
-LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
 (Font)              scaled to size 6.0pt on input line 136.
-File: ./images/devices.jpg Graphic file (type bmp)
-<./images/devices.jpg>
+LaTeX Font Info:    Font shape `OT1/ntxtt/m/n' will be
+(Font)              scaled to size 8.0pt on input line 138.
 
 
 [2]
+File: ./images/devices.jpg Graphic file (type bmp)
+<./images/devices.jpg>
 File: ./images/viewer_ui.png Graphic file (type bmp)
 <./images/viewer_ui.png>
 LaTeX Font Info:    Font shape `OT1/ntxtt/m/n' will be
-(Font)              scaled to size 9.0pt on input line 182.
+(Font)              scaled to size 9.0pt on input line 204.
 
 
-LaTeX Font Info:    Font shape `OT1/ntxtt/m/n' will be
-(Font)              scaled to size 6.0pt on input line 210.
+
+LaTeX Warning: Citation `mermaid' on page 3 undefined on input line 221.
+
+
+LaTeX Warning: Citation `mermaid-statediagram' on page 3 undefined on input line 223.
+
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
@@ -670,8 +687,8 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 
 [3]
-File: ./images/step_2.jpg Graphic file (type bmp)
-<./images/step_2.jpg>
+File: ./images/step_22.png Graphic file (type bmp)
+<./images/step_22.png>
 File: ./images/var_log2.jpg Graphic file (type bmp)
 <./images/var_log2.jpg>
 
@@ -679,31 +696,40 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 
 
-File: ./images/2_realtime.png Graphic file (type bmp)
-<./images/2_realtime.png>
-
-LaTeX Warning: Citation `sonoda2021' on page 4 undefined on input line 290.
-
-
-
-[4]
+File: ./images/realtime.pdf Graphic file (type pdf)
+<./images/realtime.pdf>
 File: ./images/protocol-state-machine3.png Graphic file (type bmp)
 <./images/protocol-state-machine3.png>
-
-
-File: ./images/3_debug_comparison.pdf Graphic file (type pdf)
-<./images/3_debug_comparison.pdf>
-
-Overfull \hbox (27.82278pt too wide) in paragraph at lines 325--326
- [][] 
- []
-
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
+LaTeX Warning: Citation `sonoda2021' on page 4 undefined on input line 329.
+
+
+
+[4]
+
+File: ./images/3_debug_comparison.pdf Graphic file (type pdf)
+<./images/3_debug_comparison.pdf>
+
+Overfull \hbox (13.5964pt too wide) in paragraph at lines 360--361
+ [][] 
+ []
+
+
 
 [5]
+
+
+Overfull \hbox (47.22348pt too wide) in paragraph at lines 420--422
+[]\OT1/ntxtlf/m/n/8 PlatformIO Labs,  \JY1/mc/m/n/8 “\OT1/ntxtlf/m/n/8 What is Plat-formIO?\JY1/mc/m/n/8 ” \OT1/ntxtlf/m/n/8 , https://docs.platformio.org/en/latest/what-
+ []
+
+
+Overfull \hbox (116.17632pt too wide) in paragraph at lines 428--430
+[]\OT1/ntxtlf/m/n/8 Mermaid.js,  \JY1/mc/m/n/8 “\OT1/ntxtlf/m/n/8 State Di-a-gram Syn-tax (stateDiagram-v2),\JY1/mc/m/n/8 ” \OT1/ntxtlf/m/n/8 https://mermaid.js.org/syntax/stateDiagram.html,
+ []
 
 
 
@@ -713,14 +739,17 @@ pLaTeX2e <2023-02-14>+1, based on
 LaTeX2e <2025-06-01> patch level 1
 L3 programming layer <2020/03/25>
  ***********
+
+LaTeX Warning: There were undefined references.
+
  ) 
 Here is how much of TeX's memory you used:
- 8607 strings out of 468440
- 119168 string characters out of 5450466
- 585782 words of memory out of 5000000
- 37141 multiletter control sequences out of 15000+600000
+ 8611 strings out of 468440
+ 119257 string characters out of 5450466
+ 585781 words of memory out of 5000000
+ 37145 multiletter control sequences out of 15000+600000
  673594 words of font info for 162 fonts, out of 8000000 for 9000
  929 hyphenation exceptions out of 8191
- 76i,8n,78p,982b,1377s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 76i,8n,78p,982b,1319s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on out/thesis_tsujimura.dvi (6 pages, 44060 bytes).
+Output written on out/thesis_tsujimura.dvi (6 pages, 46668 bytes).
