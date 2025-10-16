@@ -1,4 +1,4 @@
-This is e-upTeX, Version 3.141592653-p4.1.2-u2.00-250202-2.6 (utf8.sjis) (TeX Live 2025) (preloaded format=platex 2025.9.18)  15 OCT 2025 21:38
+This is e-upTeX, Version 3.141592653-p4.1.2-u2.00-250202-2.6 (utf8.sjis) (TeX Live 2025) (preloaded format=platex 2025.9.18)  16 OCT 2025 15:58
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -695,25 +695,22 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 File: ./images/3_debug_comparison.pdf Graphic file (type pdf)
 <./images/3_debug_comparison.pdf>
 
-Overfull \hbox (13.5964pt too wide) in paragraph at lines 362--363
+Overfull \hbox (13.5964pt too wide) in paragraph at lines 361--362
  [][] 
  []
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
 
 
 
 [5]
 
 
-Overfull \hbox (47.22348pt too wide) in paragraph at lines 415--417
-[]\OT1/ntxtlf/m/n/8 PlatformIO Labs,  \JY1/mc/m/n/8 “\OT1/ntxtlf/m/n/8 What is Plat-formIO?\JY1/mc/m/n/8 ” \OT1/ntxtlf/m/n/8 , https://docs.platformio.org/en/latest/what-
+Overfull \hbox (29.00748pt too wide) in paragraph at lines 414--417
+[]\OT1/ntxtlf/m/n/8 PlatformIO Labs,  \JY1/mc/m/n/8 “\OT1/ntxtlf/m/n/8 What is Plat-formIO?\JY1/mc/m/n/8 ” \OT1/ntxtlf/m/n/8 , https://docs.platformio.org/en/latest/
  []
 
 
-Overfull \hbox (116.17632pt too wide) in paragraph at lines 426--428
-[]\OT1/ntxtlf/m/n/8 Mermaid.js,  \JY1/mc/m/n/8 “\OT1/ntxtlf/m/n/8 State Di-a-gram Syn-tax (stateDiagram-v2),\JY1/mc/m/n/8 ” \OT1/ntxtlf/m/n/8 https://mermaid.js.org/syntax/stateDiagram.html,
+Overfull \hbox (31.77632pt too wide) in paragraph at lines 426--429
+[]\OT1/ntxtlf/m/n/8 Mermaid.js,  \JY1/mc/m/n/8 “\OT1/ntxtlf/m/n/8 State Di-a-gram Syn-tax (stateDiagram-v2),\JY1/mc/m/n/8 ” \OT1/ntxtlf/m/n/8 https://mermaid.js.org/
  []
 
 
@@ -726,12 +723,12 @@ L3 programming layer <2020/03/25>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 8610 strings out of 468440
- 119241 string characters out of 5450466
- 594781 words of memory out of 5000000
- 37144 multiletter control sequences out of 15000+600000
+ 8608 strings out of 468440
+ 119181 string characters out of 5450466
+ 607781 words of memory out of 5000000
+ 37142 multiletter control sequences out of 15000+600000
  673594 words of font info for 162 fonts, out of 8000000 for 9000
  929 hyphenation exceptions out of 8191
  76i,8n,78p,1012b,1319s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on out/thesis_tsujimura.dvi (6 pages, 47108 bytes).
+Output written on out/thesis_tsujimura.dvi (6 pages, 47872 bytes).

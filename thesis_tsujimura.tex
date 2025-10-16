@@ -166,6 +166,7 @@ void protocol_main() {
 }
 \end{lstlisting}
 \caption{状態遷移図から変換されたC++プログラムの例}
+\ecaption{Example of C++ program converted from the state transition diagram.}
 \label{fig:converted-code}
 \end{figure}
 \vskip\baselineskip
@@ -180,7 +181,7 @@ void protocol_main() {
   \centering
   \includegraphics[width=60mm]{./images/devices.jpg}
   \caption{どこでモデム(左)とGPSモジュール(右)}
-  \ecaption{Block diagram of the proposed system.}
+  \ecaption{Wireless communication device "Dokodemo Modem" (left) and GPS module (right).}
   \label{fig:devices}
 \end{figure}
 
@@ -202,15 +203,7 @@ void protocol_main() {
 % \vskip\baselineskip
 
 \subsubsection{ログ出力形式}
-状態遷移や変数を逐次ログとして出力し、それを可視化・解析するために，ログの出力形式を統一した。具体的には，状態遷移は
-\begin{verbatim}
-STATE:LISTEN
-\end{verbatim}
-のように1行1状態で出力し，変数は
-\begin{verbatim}
-[VAR:current_slot=3]
-\end{verbatim}
-のように \verb|[VAR:<name>=<value>]| 形式で出力する。値は数値・文字列の双方を許容し，可視化側で時間順に解析する。単純で曖昧さの少ない表記とすることで，正規表現に基づく軽量なパーサで高速に処理できる。
+状態遷移や変数を逐次ログとして出力し、それを可視化・解析するために，ログの出力形式を統一した。具体的には，状態遷移はSTATE:LISTENのように1行1状態で出力し，変数はログは \verb|[VAR:current_slot=3]| のように \verb|[VAR:<name>=<value>]| 形式で出力する。値は数値・文字列の双方を許容し，可視化側で時間順に解析する。単純で曖昧さの少ない表記とすることで，正規表現に基づく軽量なパーサで高速に処理できる。
 
 さらに，ログ出力の形式にばらつきが生じないよう，C++のマクロを用いてログ出力関数を定義している。このマクロは，変数名と値を自動的に取得して \verb|[VAR:<name>=<value>]| 形式で出力するため，開発者は出力の形式を考慮する必要はない。例えば，ユーザは 状態遷移図のある状態においてentry（その状態で実行する処理を記述する部分）内に\verb|PRINT_VAR_LOG(変数)| のように記述するだけで統一フォーマットのログを生成できる。この仕組みにより，全ての出力が一定形式で記録され，可視化システム側で確実に解析可能となる。
 % \vskip\baselineskip
@@ -221,7 +214,7 @@ STATE:LISTEN
 
 Mermaid.jsは，テキストベースでフローチャートや状態遷移図を描画できる軽量なJavaScriptライブラリであり，
 HTML上での埋め込みや動的描画に適している\cite{Mermaid}。
-本研究では，ブラウザ環境で動作し，スタイルの変更が容易であり，構文が簡潔で自動生成との親和性が高い点から採用した。
+本研究では，ブラウザ環境で動作し，ハイライト等のスタイルの変更が容易であり，構文が簡潔で自動生成との親和性が高い点から採用した。
 これにより，状態遷移図を表すJSONデータから自動的にMermaid記法を生成し，\verb|stateDiagram-v2|形式\cite{MermaidStateDiagram}で描画することで，設計段階の論理構造をそのままの形で可視化できる。
 
 
@@ -244,14 +237,17 @@ JSONの形式は図\ref{fig:json-structure}に示す通りである。\texttt{st
 ],
 "transitions": [
 {"from": "LISTEN", "to": "RECEIVE"},
+{"from": "LISTEN", "to": "LISTEN"},
 {"from": "RECEIVE", "to": "TRANSMIT"},
 {"from": "TRANSMIT", "to": "WAIT_ACK"},
-{"from": "WAIT_ACK", "to": "LISTEN"}
+{"from": "WAIT_ACK", "to": "LISTEN"},
+{"from": "WAIT_ACK", "to": "WAIT_ACK"}
 ],
 "initialState": "LISTEN"
 }
 \end{lstlisting}
 \caption{状態遷移図を表すJSONの例}
+\ecaption{Example of JSON representing a state transition diagram.}
 \label{fig:json-structure}
 \end{figure}
 
@@ -263,11 +259,14 @@ JSONの形式は図\ref{fig:json-structure}に示す通りである。\texttt{st
 stateDiagram-v2
 [*] --> LISTEN
 LISTEN --> RECEIVE
+LISTEN --> LISTEN
 RECEIVE --> TRANSMIT
 TRANSMIT --> WAIT_ACK
 WAIT_ACK --> LISTEN
+WAIT_ACK --> WAIT_ACK
 \end{lstlisting}
 \caption{状態遷移図を表すMermaid.jsフォーマットの例}
+\ecaption{Example of Mermaid.js format representing a state transition diagram.}
 \label{fig:mermaid-example}
 \end{figure}
 
@@ -328,7 +327,7 @@ WAIT_ACK --> LISTEN
 \end{figure*}
 
 
-本節では，状態遷移図から自動生成されたファームウェアを用いて実装した無線通信プロトコルについて述べる。本プロトコルは，園田ら\cite{sonoda}によるCSMA/TDMAベースのプロトコルを参考として設計したものであり，TDMAによるスロット分割を基本構造としつつ，各端末が自律的に送信スロットを決定する点に特徴を持つ。
+本節では，状態遷移図から自動生成されたファームウェアを用いて実装した無線通信プロトコルについて述べる。本プロトコルは，園田ら\cite{sonoda}によるCSMA/TDMAベースのプロトコルを参考として設計したものであり，各端末が自律的に送信スロットを決定する点に特徴を持つ。
 
 通信は，中継器（集約機）と複数の端末ノードとの間で行われる。通信ターン（フレーム）は複数のスロットで構成される。このプロトコルの特徴は最初のスロットにおいて中継器が全端末に対してスロットの占有状況を通知し、それをもとに自律的に自分のスロットを決定していくところである。各端末はこの通知された情報をもとに，自ノードの送信スロット候補を自律的に選択する。端末は、選択した候補スロットにおいてリクエストパケットを送信し，中継器からACK応答を受信した時点でスロットを確定・占有する。一方で，ACKが返ってこなかった場合や他ノードとの競合が発生した場合は，次のターンで再びスロット情報の受信を試み再試行を行う。このように，各端末が占有状況に基づいて分散的にスロットを決定することで，動的なスロット割り当てを実現している。
 
@@ -413,7 +412,8 @@ WAIT_ACK --> LISTEN
 信学技報,  NS2023‑147, pp.120–125, Dec. 2023.
 
 \bibitem{platformio}PlatformIO Labs, “What is PlatformIO?”, 
-https://docs.platformio.org/en/latest/what-is-platformio.html, 参照 Oct. 15, 2025.
+https://docs.platformio.org/en/latest/
+what-is-platformio.html, 参照 Oct. 15, 2025.
 
 \bibitem{kobayashi}小林 遼, アサノ デービッド, 不破 泰：  
 “センサーネットワーク検証システムにおける遷移図を用いたMACプロトコル設計環境の開発”，  
@@ -424,7 +424,8 @@ https://docs.platformio.org/en/latest/what-is-platformio.html, 参照 Oct. 15, 2
 https://mermaid.js.org/intro/, 参照 Oct. 15, 2025.
 
 \bibitem{MermaidStateDiagram}Mermaid.js, “State Diagram Syntax (stateDiagram-v2),” 
-https://mermaid.js.org/syntax/stateDiagram.html, 参照 Oct. 15, 2025.
+https://mermaid.js.org/
+syntax/stateDiagram.html, 参照 Oct. 15, 2025.
 
 \bibitem{MQTT}Eclipse Foundation, “MQTT: Message Queuing Telemetry Transport,” 
 https://mqtt.org/, 参照 Oct. 15, 2025.
